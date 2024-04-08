@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap')
+
+:root
+  --color-primary: #3a00ff
+  --color-primary-alt: #6f6ffd
+  --color-secondary: #d42257
+  --color-background: #d2fbf7
+  --color-text: #412d86
+  --color-light: #fff
+  --color-anchor: #3a00ff
+  --font-family: "Baloo 2", sans-serif
+  --font-weight-strong: 500
+  --font-size-h1: 6rem
+  --font-size-h2: 3rem
+  --font-size-h3: 2rem
+  --font-size-h4: 1.35rem
+  --font-size-text: 1.15rem
+  --border-radius: 8px
+
+
+/*
+ * [Modified] Modern CSS Reset
+ * @link https://github.com/hankchizljaw/modern-css-reset */
+
+
+/* Box sizing rules */
+*,
+*::before,
+*::after 
+  box-sizing: border-box
+
+
+/* Remove default margin */
+body,h1,h2,h3,h4,h5,h6
+  margin: 0
+
+
+html
+    font-family: "Inter", sans-serif
+    overflow-x: hidden
+
+
+/* Set Body defaults */
+body 
+  min-height: 100vh
+  line-height: 2
+  text-rendering: optimizeSpeed
+  overflow-x: hidden
+
+
+/*=============================
+    HEADER STYLES
+
+header
+    min-height: 16rem
+
+    .container
+
+
+
+    .link-github
+        padding: .5rem 1rem 
+        svg
+            width: 1em
+            height: 1em
+
+/*=============================
+    MAIN STYLES
+
+[class^=link]:not(.link-codepen), .profile .container > a
+    display: inline-flex
+    align-items: center
+    
+    
+    font-size: 1.125rem
+    text-align: center
+    text-decoration: none
+
+
+/*=============================
+    ASIDE STYLES
+
+aside
+    
+    &.profile
+        
+        position: absolute
+        right: 0
+        top: 0
+
+        .container
+            background: #ccc
+
+            &::after
+                content: ' + Styles'
+                padding-left: 1rem 
+                text-align: left
+                width: 100%
+                position: absolute
+                left: 0
+                bottom: -2rem
+
+                background: none
+                border: 1px solid #ccc
+            
