@@ -17,7 +17,6 @@
   --font-size-text: 1.15rem
   --border-radius: 8px
 
-
 /*
  * [Modified] Modern CSS Reset
  * @link https://github.com/hankchizljaw/modern-css-reset */
@@ -60,17 +59,16 @@ header
 
     .link-github
         padding: .5rem 1rem 
-        svg
-            width: 1em
-            height: 1em
-
+        
+svg
+    width: 1em
+    height: 1em
 /*=============================
     MAIN STYLES
 
 [class^=link]:not(.link-codepen), .profile .container > a
     display: inline-flex
     align-items: center
-    
     
     font-size: 1.125rem
     text-align: center
@@ -83,23 +81,59 @@ header
 aside
     
     &.profile
-        
-        position: absolute
+        width: 30%
+        position: fixed
         right: 0
-        top: 0
+        bottom: -320px
+        // bottom: 0
+        transition: bottom .2s ease-in-out
+        
 
         .container
+            padding: 1rem
             background: #ccc
-
+            height: 320px
             &::after
-                content: ' + Styles'
+                backdrop-filter: blur(3px) brightness(33%)
+                color: white
+                content: '> Styles'
                 padding-left: 1rem 
-                text-align: left
-                width: 100%
+
+                width: 50%
                 position: absolute
                 left: 0
-                bottom: -2rem
+                top: -32px
 
                 background: none
-                border: 1px solid #ccc
-            
+
+        &:hover
+            bottom: 0
+
+/*=============================
+    FOOTER STYLES
+
+footer
+    background: white
+    position: fixed
+    bottom: 0
+    width: 70%
+    
+    .container
+        // text-align: center
+        width: 100%
+        
+        margin-left: auto
+        margin-right: auto 
+        display: inline-flex
+        flex-direction: column
+
+    p
+        margin: 0
+
+    ul
+        list-style: none
+        padding: 0
+        margin: 0
+        display: inline-flex
+        justify-content: center
+        gap: 1rem

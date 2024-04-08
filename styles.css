@@ -52,7 +52,8 @@ header {
 header .link-github {
   padding: 0.5rem 1rem;
 }
-header .link-github svg {
+
+svg {
   width: 1em;
   height: 1em;
 }
@@ -70,21 +71,55 @@ header .link-github svg {
 /*=============================
  *  ASIDE STYLES */
 aside.profile {
-  position: absolute;
+  width: 30%;
+  position: fixed;
   right: 0;
-  top: 0;
+  bottom: -320px;
+  transition: bottom 0.2s ease-in-out;
 }
 aside.profile .container {
+  padding: 1rem;
   background: #ccc;
+  height: 320px;
 }
 aside.profile .container::after {
-  content: " + Styles";
+  backdrop-filter: blur(3px) brightness(33%);
+  color: white;
+  content: "> Styles";
   padding-left: 1rem;
-  text-align: left;
-  width: 100%;
+  width: 50%;
   position: absolute;
   left: 0;
-  bottom: -2rem;
+  top: -32px;
   background: none;
-  border: 1px solid #ccc;
+}
+aside.profile:hover {
+  bottom: 0;
+}
+
+/*=============================
+ *  FOOTER STYLES */
+footer {
+  background: white;
+  position: fixed;
+  bottom: 0;
+  width: 70%;
+}
+footer .container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-flex;
+  flex-direction: column;
+}
+footer p {
+  margin: 0;
+}
+footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: inline-flex;
+  justify-content: center;
+  gap: 1rem;
 }
