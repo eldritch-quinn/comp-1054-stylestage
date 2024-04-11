@@ -16,6 +16,7 @@
   --font-size-h4: 1.35rem;
   --font-size-text: 1.15rem;
   --border-radius: 8px;
+  --animaton-speed: .3s;
 }
 
 /* * [Modified] Modern CSS Reset
@@ -48,6 +49,8 @@ body {
 /*=============================
  *  HEADER STYLES */
 header {
+  display: flex;
+  align-items: center;
   min-height: 16rem;
 }
 header .link-github {
@@ -100,15 +103,13 @@ aside.profile:hover {
 /*=============================
  *  FOOTER STYLES */
 footer {
-  position: fixed;
   bottom: 0;
   width: 70%;
   bottom: -300px;
   transition: bottom 0.2s ease-out;
 }
 footer .container {
-  padding: 2rem;
-  padding-top: 4rem;
+  padding: 1rem;
   background: #ebebeb;
   width: 100%;
   height: 300px;
@@ -128,14 +129,10 @@ footer .container::after {
   top: -32px;
   border-radius: 1rem 1rem 0 0;
 }
-footer:hover {
-  bottom: 0;
-}
 footer p {
   margin: 0;
 }
 footer p:nth-of-type(1) {
-  margin-top: 1rem;
   text-align: center;
 }
 footer p:nth-last-of-type(1), footer p:nth-last-of-type(2) {
@@ -145,8 +142,6 @@ footer p:nth-last-of-type(1), footer p:nth-last-of-type(2) {
   color: #474747;
 }
 footer ul {
-  position: absolute;
-  top: 1.5rem;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -157,11 +152,12 @@ footer ul {
 footer ul li {
   font-size: 1rem;
   padding: 6px 8px;
-  border: 2px solid #ccc;
+  border: 2px solid var(--color-primary-alt);
+  transition: all calc(var(--animaton-speed) / 2);
   position: relative;
   top: -3px;
   right: 3px;
-  box-shadow: 2px 2px #b4b7c0;
+  box-shadow: 2px 2px var(--color-primary);
   background: var(--color-primary);
   border-radius: 2rem;
 }
@@ -172,4 +168,22 @@ footer ul li:hover {
   top: 0;
   right: 0;
   box-shadow: none;
+}
+
+@media (max-width: 425px) {
+  aside.profile {
+    width: 50%;
+    bottom: -400px;
+  }
+  aside.profile .container {
+    height: 400px;
+    padding: 0.5rem 1rem;
+    background: #ebebeb;
+  }
+  aside.profile .container::after {
+    width: 100%;
+  }
+  aside.profile:hover {
+    bottom: 0px;
+  }
 }
