@@ -17,20 +17,17 @@ $font-size-text: 1.15rem
 $border-radius: 8px
 $animaton-speed: .3s
 
-/*
- * [Modified] Modern CSS Reset
- * @link https://github.com/hankchizljaw/modern-css-reset */
-
-
 /* Box sizing rules */
 html
     box-sizing: border-box
+    font-family: "Inter", sans-serif
+    overflow-x: hidden
 
 *, *::before, *::after
     box-sizing: border-box
 
 /* Remove all animations and transitions for people that prefer not to see them
-@media (prefers-reduced-motion: reduce) 
+@media screen and (prefers-reduced-motion: reduce)
   * 
     animation-duration: 0.01ms !important
     animation-iteration-count: 1 !important
@@ -41,12 +38,6 @@ html
 /* Remove default margin */
 body,h1,h2,h3,h4,h5,h6
     margin: 0
-
-
-html
-    font-family: "Inter", sans-serif
-    overflow-x: hidden
-
 
 /* Set Body defaults */
 body 
@@ -68,8 +59,6 @@ header .container
 
     .link-github
         padding: .5rem 1rem 
-
-
 
 // navigation styles
 nav
@@ -109,20 +98,60 @@ svg
 /*=============================
     MAIN STYLES
 
-[class^=link]:not(.link-codepen), .profile .container > a
+[class^=link], .profile .container > a
     display: inline-flex
     align-items: center
     
     //font-size: 1.125rem
     text-align: center
     text-decoration: none
+
 main
+    padding-top: 1rem
+    gap: 1rem
+    background: black
     display: flex
     justify-content: center
     
     .container
         width: 768px
 
+    section
+        
+        background: white    
+        margin-top: 2rem
+        padding-top: 1rem
+        > h2
+            padding-left: 1rem
+            background: white  
+            font-size: 3rem
+            position: relative
+            top: -3rem
+            right: 3rem
+
+        ul
+            // unique list in modern css spotlight
+            list-style: none
+
+            display: flex
+            justify-content: space-around
+            flex-wrap: wrap
+            
+            li
+                // styles for each modern css component
+                user-select: none
+                margin: 1rem
+                cursor: help
+                position: relative
+                top: 0
+                transition: all $animaton-speed ease-in-out
+                &:hover
+                    top: -5px
+                    transform: scale(1.2) rotate(3deg)
+                &:nth-child(even):hover
+                    transform: scale(1.2) rotate(-3deg)
+                    
+                
 /*=============================
     ASIDE STYLES
 
