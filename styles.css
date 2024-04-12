@@ -71,6 +71,14 @@ svg {
   text-decoration: none;
 }
 
+main {
+  display: flex;
+  justify-content: center;
+}
+main .container {
+  width: 850px;
+}
+
 /*=============================
  *  ASIDE STYLES */
 aside.profile {
@@ -104,7 +112,6 @@ aside.profile:hover {
  *  FOOTER STYLES */
 footer {
   bottom: 0;
-  width: 70%;
   bottom: -300px;
   transition: bottom 0.2s ease-out;
 }
@@ -170,7 +177,10 @@ footer ul li:hover {
   box-shadow: none;
 }
 
-@media (max-width: 425px) {
+@media (max-width: 768px) {
+  main .container {
+    width: 100%;
+  }
   aside.profile {
     width: 50%;
     bottom: -400px;
@@ -185,5 +195,11 @@ footer ul li:hover {
   }
   aside.profile:hover {
     bottom: 0px;
+  }
+  footer ul {
+    gap: 0;
+  }
+  footer ul li {
+    font-size: 0.7rem;
   }
 }

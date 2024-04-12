@@ -73,7 +73,12 @@ svg
     //font-size: 1.125rem
     text-align: center
     text-decoration: none
-
+main
+    display: flex
+    justify-content: center
+    
+    .container
+        width: 850px
 
 /*=============================
     ASIDE STYLES
@@ -117,7 +122,6 @@ footer
     
 
     bottom: 0
-    width: 70%
     bottom: -300px
     transition: bottom .2s ease-out
     
@@ -197,7 +201,11 @@ footer
                 right: 0
                 box-shadow: none
 
-@media ( max-width: 425px )
+@media ( max-width: 768px )
+    
+    main .container
+        width: 100%
+    
     aside.profile
         width: 50%
         
@@ -213,4 +221,9 @@ footer
 
         &:hover
             bottom: 0px
+
+    footer ul 
+        gap: 0
+        li
+            font-size: 0.7rem
     
