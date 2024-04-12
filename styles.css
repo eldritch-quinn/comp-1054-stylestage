@@ -48,13 +48,39 @@ body {
 
 /*=============================
  *  HEADER STYLES */
-header {
+header .container {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   min-height: 16rem;
 }
-header .link-github {
+header .container .link-github {
   padding: 0.5rem 1rem;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+}
+nav ul {
+  list-style: none;
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+nav li {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+}
+nav a {
+  display: block;
+  white-space: nowrap;
+  text-decoration: none;
+}
+nav a:before {
+  content: "[~] ";
 }
 
 svg {
@@ -82,6 +108,7 @@ main .container {
 /*=============================
  *  ASIDE STYLES */
 aside.profile {
+  z-index: 10;
   width: 30%;
   position: fixed;
   right: 0;
@@ -178,6 +205,9 @@ footer ul li:hover {
 }
 
 @media (max-width: 768px) {
+  nav ul {
+    flex-wrap: wrap;
+  }
   main .container {
     width: 100%;
   }

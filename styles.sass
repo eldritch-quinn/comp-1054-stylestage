@@ -27,12 +27,12 @@
 *,
 *::before,
 *::after 
-  box-sizing: border-box
+    box-sizing: border-box
 
 
 /* Remove default margin */
 body,h1,h2,h3,h4,h5,h6
-  margin: 0
+    margin: 0
 
 
 html
@@ -42,27 +42,57 @@ html
 
 /* Set Body defaults */
 body 
-  min-height: 100vh
-  line-height: 2
-  text-rendering: optimizeSpeed
-  overflow-x: hidden
+    min-height: 100vh
+    line-height: 2
+    text-rendering: optimizeSpeed
+    overflow-x: hidden
 
 
 /*=============================
     HEADER STYLES
 
-header
+header .container
     display: flex
-    align-items: center
+    flex-direction: column
+    justify-content: center
 
     min-height: 16rem
 
     .link-github
         padding: .5rem 1rem 
-        
+
+nav
+    display: flex
+    justify-content: center
+    // navigation styles
+    ul
+        // remove list styling
+        list-style: none
+        padding: 1rem
+        // border: 1px solid darkgreen
+
+        width: 100%
+        display: flex
+        justify-content: center
+        gap: .5rem
+
+    li
+        padding: .5rem
+        border: 1px solid #ccc
+    a
+        display: block
+        white-space: nowrap
+        text-decoration: none
+
+
+        &:before
+            content: '[~] '
+       
 svg
     width: 1em
     height: 1em
+
+    
 /*=============================
     MAIN STYLES
 
@@ -86,6 +116,7 @@ main
 aside
     
     &.profile
+        z-index: 10
         width: 30%
         position: fixed
         right: 0
@@ -203,8 +234,12 @@ footer
 
 @media ( max-width: 768px )
     
+    nav ul
+        flex-wrap: wrap
+
     main .container
         width: 100%
+
     
     aside.profile
         width: 50%
