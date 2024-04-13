@@ -86,34 +86,45 @@ svg {
 
 main {
   padding-top: 1rem;
-  gap: 1rem;
   background: black;
   display: flex;
   justify-content: center;
 }
 main .container {
-  width: 768px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: clamp(400px, 80vw, 100vw);
 }
-main section {
+main article {
+  padding: 2rem;
+  border-radius: 1rem;
   background: white;
-  margin-top: 2rem;
   padding-top: 1rem;
-}
-main section > h2 {
-  padding-left: 1rem;
-  background: white;
-  font-size: 3rem;
   position: relative;
-  top: -3rem;
-  right: 3rem;
+  transition: all 0.3s ease-out;
 }
-main section ul {
+main article h2 {
+  font-size: 3rem;
+  background: white;
+  border-radius: 2rem;
+  text-align: center;
+  top: 0;
+  right: 2rem;
+  position: relative;
+  box-shadow: none;
+  transition: all 0.3s;
+}
+main article section ~ section {
+  margin-top: 3rem;
+}
+main article ul {
   list-style: none;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
 }
-main section ul li {
+main article ul li {
   user-select: none;
   margin: 1rem;
   cursor: help;
@@ -121,12 +132,17 @@ main section ul li {
   top: 0;
   transition: all 0.3s ease-in-out;
 }
-main section ul li:hover {
+main article ul li:hover {
   top: -5px;
   transform: scale(1.2) rotate(3deg);
 }
-main section ul li:nth-child(even):hover {
+main article ul li:nth-child(even):hover {
   transform: scale(1.2) rotate(-3deg);
+}
+main article section:hover h2 {
+  box-shadow: rgba(149, 157, 165, 0.308) 0px 8px 24px;
+  top: -2rem;
+  left: -2rem;
 }
 
 /*=============================
@@ -229,17 +245,26 @@ body > footer ul li:hover {
 }
 
 /*=============================
- *  !!Alternate Mobile Layout!! */
-@media (max-width: 768px) {
+ *  Alternate Mobile Layout */
+@media (width <= 768px) {
   nav ul {
     flex-wrap: wrap;
     flex-direction: column;
   }
-  main {
-    padding: 1rem;
-  }
   main .container {
     width: 100%;
+  }
+  main article {
+    margin-top: 2rem;
+    position: static;
+    padding-top: 1rem;
+    right: 0;
+  }
+  main article h2 {
+    width: 100%;
+  }
+  main article:hover h2 {
+    box-shadow: none;
   }
   aside.profile {
     width: 50%;
@@ -261,5 +286,37 @@ body > footer ul li:hover {
   }
   footer ul li {
     font-size: 0.7rem;
+  }
+}
+/*=============================
+ *  Large Layout */
+@media (width >= 769px) {
+  main article {
+    margin-top: 1rem;
+    transform: scale(0.95);
+  }
+  main article:hover {
+    transform: none;
+  }
+}
+/*=============================
+ *  !!MEGA Layout!! */
+@media (width >= 1440px) {
+  body main > .container {
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+  body main > .container article {
+    width: 50%;
+    flex-basis: 50%;
+  }
+  body main > .container article section {
+    width: 100%;
+  }
+  body main > .container article section h2 {
+    width: 50%;
+  }
+  body main > .container article:last-of-type {
+    flex-basis: 75%;
   }
 }
