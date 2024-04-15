@@ -3,19 +3,12 @@
 $color-primary: #3a00ff
 $color-primary-alt: #6f6ffd
 $color-secondary: #d42257
-$color-background: #d2fbf7
-$color-text: #412d86
-$color-light: #fff
-$color-anchor: #3a00ff
-$font-family: "Baloo 2", sans-serif
-$font-weight-strong: 500
 $font-size-h1: 6rem
 $font-size-h2: 3rem
 $font-size-h3: 2rem
 $font-size-h4: 1.35rem
 $font-size-text: 1.15rem
-$border-radius: 8px
-$animaton-speed: .3s
+$animation-speed: .3s
 $helpful-box-shadow: rgba(149, 157, 165, 0.308) 0px 8px 24px // <- sourced from https://getcssscan.com/css-box-shadow-examples
 
     
@@ -47,8 +40,41 @@ body
     line-height: 2
     text-rendering: optimizeSpeed
     overflow-x: hidden
+    background: black
 
+// create this class to extend to other elements
+.button
+    font-size: 1rem
+    padding: 6px 8px
+    border: 2px solid #ccc
+    gap: .3rem
+    
+    
+    transition: all calc($animation-speed / 2)
 
+    position: relative
+    top: -3px
+    right: 3px
+    box-shadow: 2px 2px #4d4d4d
+
+    background: white
+
+    border-radius: 2rem
+
+    color: black
+    a, span
+        color: black
+    svg
+        fill: black
+
+    &:hover
+        border-color: $color-primary
+        top: 0
+        right: 0
+        box-shadow: none
+
+        svg
+            fill: $color-primary
 /*=============================
     HEADER STYLES
 
@@ -58,16 +84,44 @@ header
     display: flex
     flex-direction: column
     justify-content: center
+    border: 2px solid #ccc
+    background: white
+    border-radius: 0 0 3rem 3rem
+
     // for the inner header container
     > .container
-        // CSS GRID! 🤘
-        display: grid
+        padding: 0 3rem
+        display: grid // CSS FLEX! 🤘
+        gap: .5rem
         
         justify-content: center
+        justify-items: center
 
         .link-github
-            justify-content: center
-            padding: .5rem 1rem 
+            @extend .button
+            width: max-content
+
+            
+    > *
+        justify-content: center
+        text-align: center
+    
+    h1
+        font-family: 'Times New Roman', Times, serif
+        font-size: clamp(2rem, 8vw, 10vw)
+        letter-spacing: .5rem
+        &::first-letter
+            font-size: 150%
+            font-weight: 500
+            
+
+
+            
+    h2
+        font-size: clamp(1.2rem, 3vw, 3rem)
+    
+    
+    
 
 // navigation styles
 nav
@@ -75,24 +129,30 @@ nav
     display: flex
     justify-content: center
     background: black
-    
+
     ul
+        
+        background: #2c2c2c
+        border: 2px solid #727272
+        border-radius: 3rem
         // remove list styling
         list-style: none
         padding: 1rem
         // border: 1px solid darkgreen
 
-        width: 100%
         display: flex
         justify-content: center
         gap: .5rem
 
     li
-        background: #eee
-        width: auto
-        padding: .5rem
-        border: 1px solid #ccc
-        border-radius: 1rem
+        @extend .button
+        background: #ccc
+        border-color: #727272
+        a
+            color: #2c2c2c
+        &:hover
+            a
+                color: $color-primary
     a
         display: block
         white-space: nowrap
@@ -156,7 +216,7 @@ main
             // don't forget to animate!
 
             box-shadow: none
-            transition: all $animaton-speed
+            transition: all $animation-speed
             
         section ~ section
             margin-top: 3rem
@@ -188,7 +248,7 @@ main
                 border-radius: 1rem
 
                 // animated list items..
-                transition: all calc($animaton-speed/2) ease-in-out
+                transition: all calc($animation-speed/2) ease-in-out
                 
                 // create an animation for tilting the components
                 @keyframes floaty
@@ -237,7 +297,7 @@ main
         position: relative
         
         // section animation section
-        transition: all calc($animaton-speed) ease-in-out
+        transition: all calc($animation-speed) ease-in-out
         section:hover h2
             // when the section is hovered, target the H2s & shadow them
             box-shadow: $helpful-box-shadow
@@ -272,7 +332,7 @@ main
             background: $color-primary
             border: 2px solid $color-secondary
             
-            transition: all $animaton-speed
+            transition: all $animation-speed
             &:hover
                 background: $color-secondary
                 border-color: $color-primary
@@ -324,7 +384,7 @@ body > footer
     .container
         padding: 1rem
 
-        background: $color-background
+        background: white
         
         width: 100%
         height: 300px
@@ -369,29 +429,9 @@ body > footer
         gap: 1rem
 
         li
-            font-size: 1rem
-            padding: 6px 8px
-            border: 2px solid $color-primary-alt
-            
-            transition: all calc($animaton-speed / 2)
-
-            position: relative
-            top: -3px
-            right: 3px
-            box-shadow: 2px 2px $color-primary
-
-            background: $color-primary
-
-            border-radius: 2rem
-
-            a, span
-                color: white
-
-
-            &:hover
-                top: 0
-                right: 0
-                box-shadow: none
+            @extend .button
+            gap: .5rem
+            min-width: max-content
 
 /*=============================
     Alternate Mobile Layout
