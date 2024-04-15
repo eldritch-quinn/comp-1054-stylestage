@@ -39,12 +39,11 @@ header {
   height: 100vh;
 }
 header > .container {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   justify-content: center;
-  min-height: 16rem;
 }
 header > .container .link-github {
+  justify-content: center;
   padding: 0.5rem 1rem;
 }
 
@@ -106,13 +105,16 @@ main article {
   background: white;
   padding-top: 1rem;
   position: relative;
-  transition: all 0.3s ease-out;
+  transition: all 0.3s ease-in-out;
 }
 main article h2 {
-  font-size: 3rem;
+  font-size: clamp(1rem, 5vw, 3rem);
   background: white;
   border-radius: 2rem;
   text-align: center;
+  width: 100%;
+  overflow-wrap: normal;
+  word-break: keep-all;
   top: 0;
   position: relative;
   box-shadow: none;
@@ -133,7 +135,7 @@ main article ul li {
   cursor: help;
   position: relative;
   top: 0;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.15s ease-in-out;
 }
 main article ul li:hover {
   top: -5px;
@@ -142,14 +144,62 @@ main article ul li:hover {
 main article ul li:nth-child(even):hover {
   transform: scale(1.2) rotate(-3deg);
 }
+main article section > p a, main article section > li a, main article section > blockquote a {
+  text-decoration: none;
+  color: #383838;
+  font-weight: 600;
+  color: #3a00ff;
+}
+@keyframes color-change {
+  0% {
+    color: #3a00ff;
+  }
+  50% {
+    color: #d42257;
+  }
+  100% {
+    color: #3a00ff;
+  }
+}
+main article section > p a:hover, main article section > li a:hover, main article section > blockquote a:hover {
+  animation: color-change 1s infinite;
+}
 main article section:hover h2 {
   box-shadow: rgba(149, 157, 165, 0.308) 0px 8px 24px;
-  font-size: 3.5rem;
   top: -2rem;
+}
+main section:last-of-type > a:last-of-type, main section:last-of-type p:last-of-type, main section:last-of-type ul ~ p {
+  width: 100%;
+  text-align: center;
+  justify-self: center;
+  justify-content: center;
+}
+main #files > .container {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 1rem;
+  justify-content: center;
+}
+main #files > .container h3 {
+  flex-basis: 100%;
+  text-align: center;
+}
+main #files > .container a {
+  padding: 2px 6px;
+  color: white;
+  font-weight: 500;
+  border-radius: 2px;
+  background: #3a00ff;
+  border: 2px solid #d42257;
+  transition: all 0.3s;
+}
+main #files > .container a:hover {
+  background: #d42257;
+  border-color: #3a00ff;
 }
 
 /*=============================
- *  ASIDE STYLES */
+ *  ASIDE STYLE PROFILE PANEL STYLES */
 aside.profile {
   z-index: 10;
   width: 30%;
@@ -263,11 +313,7 @@ body > footer ul li:hover {
     padding-top: 1rem;
     right: 0;
   }
-  main article section:hover h2 {
-    font-size: 2rem;
-  }
   main article h2 {
-    font-size: 2rem;
     width: 100%;
     right: 0;
   }
