@@ -17,7 +17,6 @@ $font-size-text: 1.15rem
 $border-radius: 8px
 $animaton-speed: .3s
 $helpful-box-shadow: rgba(149, 157, 165, 0.308) 0px 8px 24px // <- sourced from https://getcssscan.com/css-box-shadow-examples
-$focused-shadow: rgba(126, 107, 107, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px // same as before
 
     
 /* Box sizing rules */
@@ -56,7 +55,9 @@ body
 header 
     // make the header the entire screen so that the skip button actually makes sense lol
     height: 100vh
-    
+    display: flex
+    flex-direction: column
+    justify-content: center
     // for the inner header container
     > .container
         // CSS GRID! 🤘
@@ -138,7 +139,7 @@ main
         
         h2
             // section title styles
-            font-size: clamp(1rem, 5vw, 3rem)
+            font-size: clamp($font-size-h4, 5vw, $font-size-h2)
             background: white
             border-radius: 2rem
             text-align: center
@@ -163,30 +164,57 @@ main
         ul
             // unique list in modern css spotlight
             list-style: none
-
+            border: 1px solid $color-secondary
+            border-radius: 1rem
+            padding: 1rem
             display: flex
             justify-content: space-around
             flex-wrap: wrap
             
             li
                 // styles for each modern css component
-                user-select: none
-                margin: 1rem
+                margin: 4px 6px
+                padding: 2px 6px
+
+                
                 cursor: help
+                display: flex
+                flex-direction: column
+                justify-content: center
+                text-align: center
+                
                 position: relative
-                top: 0
+                border: 1px solid white
+                border-radius: 1rem
+
+                // animated list items..
                 transition: all calc($animaton-speed/2) ease-in-out
+                
+                // create an animation for tilting the components
+                @keyframes floaty
+                    0%  
+                        transform: rotate(0deg)
+                        
+                    25%
+                        transform: rotate(3deg)
+
+                    50%
+                        transform: rotate(0deg)
+                        
+                    75%
+                        transform: rotate(-3deg)
+
                 &:hover
-                    top: -5px
-                    transform: scale(1.2) rotate(3deg)
-                &:nth-child(even):hover
-                    transform: scale(1.2) rotate(-3deg)
+                    // fire the animation when the element is hovered
+                    border-color: $color-primary
+                    animation: floaty 1s infinite
 
         blockquote
             // blockquote styles
+                padding: 2rem
             
 
-        section > p a, section > li a, section > blockquote a
+        section > a, section > p a, section li a, section > blockquote a
             text-decoration: none
             color: #383838
             font-weight: 600
@@ -323,10 +351,7 @@ body > footer
 
     p
         margin: 0
-
-        &:nth-of-type(1)
-            
-            text-align: center
+        text-align: center
 
         &:nth-last-of-type(1), &:nth-last-of-type(2)
             font-size: .8rem
@@ -376,9 +401,7 @@ body > footer
         flex-wrap: wrap
         flex-direction: column
 
-    main 
-        
-       
+    main
         .container
             width: 100%
         
@@ -394,6 +417,8 @@ body > footer
                 right: 0
                         
             ul
+                margin: 0
+                padding: 0
                 li
                     
                     flex-basis: 30%

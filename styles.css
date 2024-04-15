@@ -37,6 +37,9 @@ body {
  *  HEADER STYLES */
 header {
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 header > .container {
   display: grid;
@@ -108,7 +111,7 @@ main article {
   transition: all 0.3s ease-in-out;
 }
 main article h2 {
-  font-size: clamp(1rem, 5vw, 3rem);
+  font-size: clamp(1.35rem, 5vw, 3rem);
   background: white;
   border-radius: 2rem;
   text-align: center;
@@ -125,26 +128,45 @@ main article section ~ section {
 }
 main article ul {
   list-style: none;
+  border: 1px solid #d42257;
+  border-radius: 1rem;
+  padding: 1rem;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
 }
 main article ul li {
-  user-select: none;
-  margin: 1rem;
+  margin: 4px 6px;
+  padding: 2px 6px;
   cursor: help;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
   position: relative;
-  top: 0;
+  border: 1px solid white;
+  border-radius: 1rem;
   transition: all 0.15s ease-in-out;
 }
+@keyframes floaty {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(3deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-3deg);
+  }
+}
 main article ul li:hover {
-  top: -5px;
-  transform: scale(1.2) rotate(3deg);
+  border-color: #3a00ff;
+  animation: floaty 1s infinite;
 }
-main article ul li:nth-child(even):hover {
-  transform: scale(1.2) rotate(-3deg);
-}
-main article section > p a, main article section > li a, main article section > blockquote a {
+main article section > a, main article section > p a, main article section li a, main article section > blockquote a {
   text-decoration: none;
   color: #383838;
   font-weight: 600;
@@ -161,7 +183,7 @@ main article section > p a, main article section > li a, main article section > 
     color: #3a00ff;
   }
 }
-main article section > p a:hover, main article section > li a:hover, main article section > blockquote a:hover {
+main article section > a:hover, main article section > p a:hover, main article section li a:hover, main article section > blockquote a:hover {
   animation: color-change 1s infinite;
 }
 main article section:hover h2 {
@@ -258,8 +280,6 @@ body > footer .container::after {
 }
 body > footer p {
   margin: 0;
-}
-body > footer p:nth-of-type(1) {
   text-align: center;
 }
 body > footer p:nth-last-of-type(1), body > footer p:nth-last-of-type(2) {
@@ -316,6 +336,10 @@ body > footer ul li:hover {
   main article h2 {
     width: 100%;
     right: 0;
+  }
+  main article ul {
+    margin: 0;
+    padding: 0;
   }
   main article ul li {
     flex-basis: 30%;
