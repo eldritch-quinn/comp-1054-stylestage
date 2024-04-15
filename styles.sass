@@ -18,6 +18,8 @@ $border-radius: 8px
 $animaton-speed: .3s
 $helpful-box-shadow: rgba(149, 157, 165, 0.308) 0px 8px 24px // <- sourced from https://getcssscan.com/css-box-shadow-examples
 $focused-shadow: rgba(126, 107, 107, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px // same as before
+
+    
 /* Box sizing rules */
 html
     box-sizing: border-box
@@ -51,22 +53,24 @@ body
 /*=============================
     HEADER STYLES
 
-header .container
-    display: flex
-    flex-direction: column
-    justify-content: center
+header 
+    > .container
+        display: flex
+        flex-direction: column
+        justify-content: center
 
-    min-height: 16rem
+        min-height: 16rem
 
-    .link-github
-        padding: .5rem 1rem 
+        .link-github
+            padding: .5rem 1rem 
+    height: 100vh
 
 // navigation styles
 nav
     // flex settings
     display: flex
     justify-content: center
-
+    background: black
     
     ul
         // remove list styling
@@ -80,16 +84,15 @@ nav
         gap: .5rem
 
     li
+        background: #eee
+        width: auto
         padding: .5rem
         border: 1px solid #ccc
+        border-radius: 1rem
     a
         display: block
         white-space: nowrap
         text-decoration: none
-
-
-        &:before
-            content: '[~] '
        
 svg
     width: 1em
@@ -115,12 +118,13 @@ main
     
     justify-content: center
 
-    .container
+    > div.container
         display: flex
         flex-direction: column
         justify-content: center
-        
         width: clamp(400px, 80vw, 100vw)
+        
+        
 
     article
         padding: 2rem
@@ -138,7 +142,7 @@ main
 
 
             top: 0
-            right: 2rem
+            
             position: relative
             
             // don't forget to animate!
@@ -179,8 +183,8 @@ main
 
             h2
                 box-shadow: $helpful-box-shadow
+                font-size: 3.5rem
                 top: -2rem
-                left: -2rem
                 
 
 
@@ -323,13 +327,25 @@ body > footer
             position: static
             padding-top: 1rem
             right: 0
+
+            section:hover h2
+                font-size: 2rem
             
             h2
+                font-size: 2rem
                 width: 100%
+                right: 0
+                        
+            ul
+                li
+                    
+                    flex-basis: 30%
             
             &:hover 
                 h2
+
                     box-shadow: none
+            
                     
                     
 
@@ -364,10 +380,11 @@ body > footer
 
             
             transform: scale(.95)
-            
                 
             &:hover
                 transform: none
+    
+
 
 /*=============================
     !!MEGA Layout!!

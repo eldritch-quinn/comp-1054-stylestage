@@ -35,19 +35,23 @@ body {
 
 /*=============================
  *  HEADER STYLES */
-header .container {
+header {
+  height: 100vh;
+}
+header > .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   min-height: 16rem;
 }
-header .container .link-github {
+header > .container .link-github {
   padding: 0.5rem 1rem;
 }
 
 nav {
   display: flex;
   justify-content: center;
+  background: black;
 }
 nav ul {
   list-style: none;
@@ -58,16 +62,16 @@ nav ul {
   gap: 0.5rem;
 }
 nav li {
+  background: #eee;
+  width: auto;
   padding: 0.5rem;
   border: 1px solid #ccc;
+  border-radius: 1rem;
 }
 nav a {
   display: block;
   white-space: nowrap;
   text-decoration: none;
-}
-nav a:before {
-  content: "[~] ";
 }
 
 svg {
@@ -90,7 +94,7 @@ main {
   display: flex;
   justify-content: center;
 }
-main .container {
+main > div.container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -110,7 +114,6 @@ main article h2 {
   border-radius: 2rem;
   text-align: center;
   top: 0;
-  right: 2rem;
   position: relative;
   box-shadow: none;
   transition: all 0.3s;
@@ -141,8 +144,8 @@ main article ul li:nth-child(even):hover {
 }
 main article section:hover h2 {
   box-shadow: rgba(149, 157, 165, 0.308) 0px 8px 24px;
+  font-size: 3.5rem;
   top: -2rem;
-  left: -2rem;
 }
 
 /*=============================
@@ -260,8 +263,16 @@ body > footer ul li:hover {
     padding-top: 1rem;
     right: 0;
   }
+  main article section:hover h2 {
+    font-size: 2rem;
+  }
   main article h2 {
+    font-size: 2rem;
     width: 100%;
+    right: 0;
+  }
+  main article ul li {
+    flex-basis: 30%;
   }
   main article:hover h2 {
     box-shadow: none;
