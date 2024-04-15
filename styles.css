@@ -33,7 +33,40 @@ body {
   overflow-x: hidden;
   background: black;
 }
+body .skip-link {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  margin: 1rem;
+  padding: 1rem;
+  text-decoration: none;
+  color: white;
+}
+body .skip-link::before {
+  content: " ⇩";
+  margin-right: 6px;
+}
+@keyframes skip {
+  0% {
+    color: red;
+    word-spacing: normal;
+  }
+  25% {
+    color: yellow;
+  }
+  50% {
+    color: blue;
+    word-spacing: 1rem;
+  }
+  100% {
+    color: green;
+    word-spacing: normal;
+  }
+}
+body .skip-link:hover {
+  animation: skip 1s infinite;
+  transition: word-spacing 1s;
+}
 
+/* create this class to extend to other elements */
 .button, body > footer ul li, nav li, header > .container .link-github {
   font-size: 1rem;
   padding: 6px 8px;
@@ -89,6 +122,41 @@ header > * {
   justify-content: center;
   text-align: center;
 }
+@keyframes wow-new-fonts {
+  0% {
+    font-family: "Times New Roman", Times, serif;
+  }
+  10% {
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  }
+  20% {
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  }
+  30% {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+  }
+  40% {
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  }
+  50% {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  60% {
+    font-family: Georgia, "Times New Roman", Times, serif;
+  }
+  70% {
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  }
+  80% {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  90% {
+    font-family: "Courier New", Courier, monospace;
+  }
+  100% {
+    font-family: "Times New Roman", Times, serif;
+  }
+}
 header h1 {
   font-family: "Times New Roman", Times, serif;
   font-size: clamp(2rem, 8vw, 10vw);
@@ -97,6 +165,9 @@ header h1 {
 header h1::first-letter {
   font-size: 150%;
   font-weight: 500;
+}
+header h1:hover {
+  animation: wow-new-fonts forwards 5s;
 }
 header h2 {
   font-size: clamp(1.2rem, 3vw, 3rem);
@@ -363,7 +434,11 @@ body > footer ul li {
 @media (width <= 768px) {
   nav ul {
     flex-wrap: wrap;
-    flex-direction: column;
+  }
+  nav ul li {
+    width: 60%;
+    min-width: max-content;
+    text-align: center;
   }
   main .container {
     width: 100%;
