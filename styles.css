@@ -20,52 +20,6 @@ html {
     scroll-behavior: auto !important;
   }
 }
-/* Remove default margin */
-body, h1, h2, h3, h4, h5, h6 {
-  margin: 0;
-}
-
-/* Set Body defaults */
-body {
-  min-height: 100vh;
-  line-height: 2;
-  text-rendering: optimizeSpeed;
-  overflow-x: hidden;
-  background: black;
-}
-body .skip-link {
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
-  margin: 1rem;
-  padding: 1rem;
-  text-decoration: none;
-  color: white;
-}
-body .skip-link::before {
-  content: " ⇩";
-  margin-right: 6px;
-}
-@keyframes skip {
-  0% {
-    color: red;
-    word-spacing: normal;
-  }
-  25% {
-    color: yellow;
-  }
-  50% {
-    color: blue;
-    word-spacing: 1rem;
-  }
-  100% {
-    color: green;
-    word-spacing: normal;
-  }
-}
-body .skip-link:hover {
-  animation: skip 1s infinite;
-  transition: word-spacing 1s;
-}
-
 /* create this class to extend to other elements */
 .button, body > footer ul li, nav li, header > .container .link-github {
   font-size: 1rem;
@@ -97,6 +51,22 @@ body .skip-link:hover {
   fill: #3a00ff;
 }
 
+@keyframes fall-in {
+  0% {
+    position: relative;
+    opacity: 0%;
+    top: -20px;
+  }
+  100% {
+    position: relative;
+    opacity: 100%;
+    top: 0px;
+  }
+}
+body, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
 /*=============================
  *  HEADER STYLES */
 header {
@@ -122,52 +92,15 @@ header > * {
   justify-content: center;
   text-align: center;
 }
-@keyframes wow-new-fonts {
-  0% {
-    font-family: "Times New Roman", Times, serif;
-  }
-  10% {
-    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  }
-  20% {
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  }
-  30% {
-    font-family: "Comic Sans MS", "Comic Sans", cursive;
-  }
-  40% {
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
-  }
-  50% {
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  60% {
-    font-family: Georgia, "Times New Roman", Times, serif;
-  }
-  70% {
-    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  }
-  80% {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-  }
-  90% {
-    font-family: "Courier New", Courier, monospace;
-  }
-  100% {
-    font-family: "Times New Roman", Times, serif;
-  }
-}
 header h1 {
   font-family: "Times New Roman", Times, serif;
   font-size: clamp(2rem, 8vw, 10vw);
   letter-spacing: 0.5rem;
+  animation: fall-in forwards 1s;
 }
 header h1::first-letter {
   font-size: 150%;
   font-weight: 500;
-}
-header h1:hover {
-  animation: wow-new-fonts forwards 5s;
 }
 header h2 {
   font-size: clamp(1.2rem, 3vw, 3rem);
@@ -210,7 +143,50 @@ svg {
 }
 
 /*=============================
- *  MAIN STYLES */
+ *  BODY + MAIN STYLES */
+body {
+  min-height: 100vh;
+  line-height: 2;
+  text-rendering: optimizeSpeed;
+  overflow-x: hidden;
+  background: black;
+  display: flex;
+  flex-direction: column;
+}
+body .skip-link {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  margin: 1rem;
+  text-align: right;
+  text-decoration: none;
+  color: white;
+}
+body .skip-link::before {
+  content: " ⇩";
+  margin-right: 6px;
+}
+@keyframes skip {
+  0% {
+    color: red;
+    word-spacing: normal;
+  }
+  25% {
+    color: yellow;
+    letter-spacing: 5px;
+  }
+  50% {
+    color: blue;
+    word-spacing: 1rem;
+  }
+  100% {
+    color: green;
+    word-spacing: normal;
+  }
+}
+body .skip-link:hover {
+  animation: skip 1s infinite;
+  transition: word-spacing 1s;
+}
+
 [class^=link], .profile .container > a {
   display: inline-flex;
   align-items: center;
@@ -376,6 +352,10 @@ aside.profile .container::after {
 }
 aside.profile:hover {
   bottom: 0;
+}
+
+#styles {
+  background: white;
 }
 
 /*=============================
